@@ -1,13 +1,13 @@
 version: '3.3'
 services:
-    db: 
+    db:
         container_name: my_db
         image: mysql
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: 1234
         ports:
-            - 3306:3306
+            - 64:64
         volumes:
             - db-data:/var/lib/mysql
     apache:
@@ -18,9 +18,9 @@ services:
         restart: always
         depends_on:
             - db
-        ports: 
+        ports:
             - 80:80
-        volumes: 
+        volumes:
             - .:/var/www/html
     admin:
         container_name: phpmyadmin
@@ -31,4 +31,4 @@ services:
         environment:
             - PMA_ARBITARY=1
 volumes:
-  db-data:
+    db-data:
